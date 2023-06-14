@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackear Ifal</title>
+    <style>
+        #ajaxButton{
+            background-color: purple;
+            border: none;
+            padding: 50px;
+            font-size: 35px;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            border-radius: 10px;
+            border-bottom: 6px solid pink;
+        }
+        #ajaxButton:hover{
+            background-color: rgb(52, 3, 52);
+            border-bottom: 6px solid rgb(194, 144, 152);
+            color: rgb(167, 167, 167);
+        }
+    </style>
+</head>
+<body>
+    
+    <button id="ajaxButton">
+        Fazer requisição
+    </button>
+      <script type="text/javascript">
+      (function() {
+        var requesiHTTP;
+        requesiHTTP = new XMLHttpRequest();
+        document.getElementById("ajaxButton").onclick = function () {fazerRequesicao('http://www.wikipedia.com');} 
+      
+        function fazerRequesicao(url) {
+          requesiHTTP.open('GET','http://www2.ifal.edu.br/?user-agent=' + encodeURIComponent('Mozilla/5.0 (Linux; Android 10; Mobile; rv:78.0) Gecko/78.0 Chrome/90.0.4430.210 Mobile Safari/537.36') ,true);
+          requesiHTTP.send(null);
+          requesiHTTP.onreadystatechange = conferir;
+        }
+      
+        function conferir() {
+          if (requesiHTTP.readyState === 4) {
+            if (requesiHTTP.status === 200) {
+              document.write(requesiHTTP.responseText);
+            } else {
+              document.write('There was a problem with the request.');
+            }
+          }
+        }
+      })();
+      </script>
+</body>
+</html>
+
+<!-- var requisicaoHttp; //httpRequest
+requisicaoHttp = new XMLHttpRequest(); //inicio da requisição do site
+    requisicaoHttp.open('Get', 'https://www2.ifal.edu.br/?user-agent=' + encodeURIComponent('Mozilla/5.0 (Linux; Android 10; Mobile; rv:78.0) Gecko/78.0 Chrome/90.0.4430.210 Mobile Safari/537.36') ,true); // Metódo de requisição, URL da página, se for TRUE vai executar o AJAX
+    requisicaoHttp.send(null); 
+    //Essa parte precisa vir antes da função
+
+    requisicaoHttp.onreadystatechange = verificar //nome da função
+    
+function verificar(){
+    if (requisicaoHttp.readyState === 4) {
+        if (requisicaoHttp.status === 200) {
+            document.write(requisicaoHttp.responseText)
+            // perfect!
+        } 
+        // everything is good, the response is received (Tudo está bem, a resposta será recebida)
+    } else {
+        document.write("Houve um erro")
+        // still not ready (Ainda não está pronto)
+    }
+
+}
+
+var requisicaoHttp; //httpRequest
+requisicaoHttp = new XMLHttpRequest(); //inicio da requisição do site
+    requisicaoHttp.open('Get', 'http://www.wikipedia.com', true); // Metódo de requisição, URL da página, se for TRUE vai executar o AJAX
+    requisicaoHttp.send(null); 
+    //Essa parte precisa vir antes da função
+
+    requisicaoHttp.onreadystatechange = verificar //nome da função
+    
+function verificar(){
+    if (requisicaoHttp.readyState === 4) {
+        if (requisicaoHttp.status === 200) {
+            document.write(requisicaoHttp.responseText)
+            // perfect!
+        } 
+        // everything is good, the response is received (Tudo está bem, a resposta será recebida)
+    } else {
+        document.write("Houve um erro")
+        // still not ready (Ainda não está pronto)
+    }
+}
+*/ -->
